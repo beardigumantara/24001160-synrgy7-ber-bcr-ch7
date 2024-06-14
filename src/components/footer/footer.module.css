@@ -1,0 +1,39 @@
+footer {
+  margin: 150px 0 100px;
+}
+
+.address,
+.socialMedia,
+.copyright {
+  width: 268px;
+  font-size: 14px;
+  font-weight: 300;
+}
+
+.navigation {
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.navigation ul li {
+  margin: 0 auto;
+  padding-bottom: 16px;
+}
+.logoFooter {
+  background: #0d28a6;
+  width: 100px;
+  height: 34px;
+  margin: 0;
+}
+
+span {
+  margin-right: 16px;
+}
+
+.offset::before {
+  display: block;
+  content: " ";
+  height: 10px;
+  margin-top: -10px;
+  visibility: hidden;
+}
