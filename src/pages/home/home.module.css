@@ -56,6 +56,10 @@
   line-height: 20px;
 }
 
+.card, .cardBody {
+  width: 268px;
+}
+
 .cardBody h5 {
   font-style: normal;
   font-weight: 700;
@@ -63,14 +67,20 @@
   line-height: 24px;
 }
 
-.card,
-.cardBody {
-  width: 268px;
+.cardBody h5, .cardBody img {
+  margin-bottom: 16px;
 }
 
-.cardBody h5,
+.cardBody h5, .cardBody img, .cardBody p {
+  padding-left: 24px;
+}
+
 .cardBody img {
-  margin-bottom: 16px;
+  padding-top: 24px;
+}
+
+.cardBody p {
+  padding-bottom: 24px;
 }
 
 /* .card-text {

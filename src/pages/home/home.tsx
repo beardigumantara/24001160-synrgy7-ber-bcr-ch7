@@ -64,58 +64,43 @@ const Home: React.FC = () => {
         <h1>Why Us?</h1>
         <p id="text-center">Mengapa harus pilih Binar Car Rental?</p>
         <div className="row">
-          <div className="col-md">
-            <div className={styles.card}>
-              <div className={styles.cardBody}>
-                <img src={iconThumbsUp} alt="icon complete" />
-                <h5 className="card-title">Mobil Lengkap</h5>
-                <p className="card-text">
-                  Tersedia banyak pilihan mobil, kondisi masih baru, bersih dan
-                  terawat
-                </p>
+            <div className="col-md">
+              <div className="card">
+                <div className={styles.cardBody}>
+                  <img src={iconThumbsUp} alt="icon complete" />
+                  <h5 className="card-title">Mobil lengkap</h5>
+                  <p className="card-text">Tersedia banyak pilihan mobil, <br />kondisi masih baru, bersih dan <br />terawat</p>
+                </div>
+              </div>
+            </div>
+            <div className="col-md">
+              <div className="card">
+                <div className={styles.cardBody}>
+                  <img src={iconPrice} alt="icon price" />
+                  <h5 className="card-title">Harga Murah</h5>
+                  <p className="card-text">Harga murah dan bersaing, bisa bandingkan harga kami dengan <br />rental mobil lain</p>
+                </div>
+              </div>
+            </div>
+            <div className="col-md">
+              <div className="card">
+                <div className={styles.cardBody}>
+                  <img src={icon24hrs} alt="icon hour" />
+                  <h5 className="card-title">Layanan 24 jam</h5>
+                  <p className="card-text">Siap melayani kebutuhan Anda <br />selama 24 jam nonstop. Kami juga <br />tersedia di akhir minggu</p>
+                </div>
+              </div>
+            </div>
+            <div className="col-md">
+              <div className="card">
+                <div className={styles.cardBody}>
+                  <img src={iconProfessional} alt="icon professional" />
+                  <h5 className="card-title">Sopir Profesional</h5>
+                  <p className="card-text">Sopir yang profesional, <br />berpengalaman, jujur, ramah dan <br />selalu tepat waktu</p>
+                </div>
               </div>
             </div>
           </div>
-          <div className="col-md">
-            <div className={styles.card}>
-              <div className={styles.cardBody}>
-                <img src={iconPrice} alt="icon price" />
-                <h5 className="card-title">Harga Murah</h5>
-                <p className="card-text">
-                  Harga murah dan bersaing, bisa bandingkan harga kami dengan
-                  rental mobil lain
-                </p>
-              </div>
-            </div>
-          </div>
-          <div className="col-md">
-            <div className={styles.card}>
-              <div className={styles.cardBody}>
-                <img src={icon24hrs} alt="icon service" />
-                <h5 className="card-title">Layanan 24 Jam</h5>
-                <p className="card-text">
-                  Siap melayani kebutuhan Anda selama 24 jam nonstop. Kami juga
-                  tersedia di akhir minggu
-                </p>
-              </div>
-            </div>
-          </div>
-          <div className="col-md">
-            <div className={styles.card}>
-              <div className={styles.cardBody}>
-                <img
-                  src={iconProfessional}
-                  alt="icon support"
-                />
-                <h5 className="card-title">Sopir Profesional</h5>
-                <p className="card-text">
-                  Sopir yang profesional, berpengalaman, jujur, ramah dan selalu
-                  tepat waktu
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
       </section>
       <section className="container-md testimonial-section offset" id="testimonial">
           <div className={styles.testimonialHeader}>
@@ -190,7 +175,9 @@ const Home: React.FC = () => {
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
             eiusmod tempor incididunt ut labore et dolore magna aliqua.
           </p>
-          <button className="btn" id={styles.btnGreen}>Mulai Sewa Mobil</button>
+          <a href="/cars">
+            <button className="btn" id={styles.btnGreen}>Mulai Sewa Mobil</button>
+          </a>
         </div>
       </section>
       <section className={`container-md ${styles.faqSection} d-flex justify-content-between ${styles.offset}`} id="faq">
