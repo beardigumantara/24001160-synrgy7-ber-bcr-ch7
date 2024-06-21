@@ -5,6 +5,7 @@ import './App.css'
 import Admin from './pages/admin/admin'
 import Login from './pages/auth/login'
 import Protected from './components/protected'
+import Register from './pages/auth/register'
 
 function App() {
   return(
@@ -13,6 +14,7 @@ function App() {
         <Route path='/' element={<Home />}/>
         <Route path='cars' element={<CarsPage />}/>
         <Route path='/login' element={<Login />}/>
+        <Route path='/register' element={<Register />}/>
         <Route path='/admin' element={<Protected><Admin /></Protected>}/>
       </Routes>
     </Router>
