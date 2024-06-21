@@ -17,7 +17,7 @@ const CarsPage : React.FC= () => {
   const [timeInput, setTimeInput] = useState('');
   const [seatInput, setSeatInput] = useState('');
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [carFiltered, _setCarFiltered] = useState([]);
+  const [_carFiltered, _setCarFiltered] = useState([]);
 
   useEffect(() => {
     const getCarsData = async () => {
