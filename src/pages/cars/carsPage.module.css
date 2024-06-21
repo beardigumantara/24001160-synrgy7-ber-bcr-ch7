@@ -1,0 +1,86 @@
+.filterCar {
+  width: 1047px;
+  height: 106px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.15);
+  border-radius: 8px;
+  background: #FFFFFF;
+  position: relative;
+  margin-top: -3em;
+  z-index: 10;
+}
+
+.col p {
+  margin-top: 24px;
+  margin-bottom: 4px;
+  font-size: 12px;
+}
+
+.formControl, .formSelect {
+  width: 210.75px !important;
+  height: 38px;
+  font-size: 12px;
+}
+
+#searchFilter {
+  background-color: #5CB85F;
+  color: #FFFFFF;
+  font-size: 14px;
+  font-weight: 700;
+  padding: 8px 12px;
+}
+
+.col button {
+  margin-top: 46px;
+}
+
+.colMargin {
+  margin-left: 12px;
+}
+
+.col {
+  padding: 0 8px 0;
+}
+
+#carsContainer {
+  width: 1047px;
+  margin: 0 auto;
+}
+
+.cardContainer {
+  width: 333px;
+  height: 100%;
+  box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.15);
+  border: none;
+}
+
+.cardContainer button {
+  align-self: center;
+}
+
+.carCardImage {
+  width: 270px;
+  margin: 24px 0 16px 24px;
+}
+
+.fontCard {
+  font-size: 14px;
+}
+
+.fontCard img {
+  margin-right: 8px;
+}
+
+.fontPrice {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.pilihBtn {
+  width: 285px;
+  background-color: #5CB85F;
+  color: #FFFFFF;
+  font-size: 14px;
+  font-weight: 700;
+  margin-bottom: 24px;
+  padding: 8px 12px;
+}
