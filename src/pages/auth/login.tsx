@@ -51,7 +51,7 @@ const Login: React.FC = () => {
         localStorage.setItem("token", token);
         console.log("role",role);
         if (role === "superadmin") {
-          navigate("/admin");
+          navigate("/admin/cars");
         } else {
           navigate("/");
         }

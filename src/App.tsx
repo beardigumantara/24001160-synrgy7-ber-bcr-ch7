@@ -6,6 +6,8 @@ import Admin from './pages/admin/admin'
 import Login from './pages/auth/login'
 import Protected from './components/protected'
 import Register from './pages/auth/register'
+import CreateCar from './pages/admin/createCar'
+import EditCar from './pages/admin/editCar'
 
 function App() {
   return(
@@ -15,7 +17,15 @@ function App() {
         <Route path='cars' element={<CarsPage />}/>
         <Route path='/login' element={<Login />}/>
         <Route path='/register' element={<Register />}/>
-        <Route path='/admin' element={<Protected><Admin /></Protected>}/>
+        <Route 
+          path='/admin/cars' 
+          element={
+            <Protected>
+              <Admin/>
+            </Protected>}>
+            <Route path='/admin/cars/create' element={<CreateCar />}/>
+            <Route path='/admin/cars/edit/:id' element={<EditCar/>}/>
+        </Route>
       </Routes>
     </Router>
   )
