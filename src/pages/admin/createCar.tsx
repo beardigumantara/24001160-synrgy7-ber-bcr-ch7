@@ -25,12 +25,20 @@ const CreateCar: React.FC = () => {
       alert("All fields are required");
       return;
     }
+    // const formData = {
+    //   "name" : name,
+    //   "price" : price,
+    //   startRent,
+    //   finishRent,
+    //   availability,
+    //   image,
+    // }
 
     const formData = new FormData();
     formData.append("name", name);
     formData.append("price", price);
-    formData.append("startRent", startRent);
-    formData.append("finishRent", finishRent);
+    formData.append("start_rent", startRent);
+    formData.append("finish_rent", finishRent);
     formData.append("availability", availability);
     formData.append("image", image);
 
@@ -38,18 +46,20 @@ const CreateCar: React.FC = () => {
     setError(null);
     setSuccess(false);
 
+    console.log("form data",formData);
+
     try {
       const token = localStorage.getItem("token");
       if (!token) {
         throw new Error("Unauthorized");
       }
-      
-      const response = await axios.post("http://localhost:4000/cars", formData, {
+      const response = await axios.post("http://localhost:8000/api/cars/create", formData, {
         headers: {
           "Content-Type": "multipart/form-data",
           Authorization: `Bearer ${token}`,
         },
       });
+      
       setSuccess(true);
       console.log(response.data);
       

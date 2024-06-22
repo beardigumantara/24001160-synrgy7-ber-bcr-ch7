@@ -22,10 +22,22 @@ function App() {
           element={
             <Protected>
               <Admin/>
-            </Protected>}>
-            <Route path='/admin/cars/create' element={<CreateCar />}/>
-            <Route path='/admin/cars/edit/:id' element={<EditCar/>}/>
-        </Route>
+            </Protected>}
+        />
+        <Route 
+          path='/admin/cars/create' 
+          element={
+            <Protected>
+              <CreateCar/>
+            </Protected>}
+        />
+        <Route 
+          path='/admin/cars/edit/:id' 
+          element={
+            <Protected>
+              <EditCar/>
+            </Protected>}
+        />
       </Routes>
     </Router>
   )

@@ -12,6 +12,7 @@ interface Car {
   finish_rent: string;
   availability: boolean;
   image: string;
+  deleted_by: number | null;
 }
 
 const CardAdmin: React.FC = () => {
@@ -27,7 +28,8 @@ const CardAdmin: React.FC = () => {
       setIsLoading(true);
       const response = await axios.get("http://localhost:8000/api/cars");
       console.log("response", response.data);
-      setCars(response.data.cars);
+      const filteredCars = response.data.cars.filter((car: Car) => car.deleted_by === null);
+      setCars(filteredCars);
     } catch (err : any) {
       setError(err.message);
     } finally {
@@ -81,7 +83,7 @@ const CardAdmin: React.FC = () => {
             <img src={car.image} alt={car.name} style={{ width: "100%", borderRadius: "8px" }} />
             <h2>{car.name}</h2>
             <p>Price: {car.price}</p>
-            <p>Available: {car.availability}</p>
+            <p>Available: {car.availability.toString()}</p>
             <p>Start Rent: {car.start_rent}</p>
             <p>Finish Rent: {car.finish_rent}</p>
             <button onClick={() => handleDeleteCar(car.id)}>Delete</button>

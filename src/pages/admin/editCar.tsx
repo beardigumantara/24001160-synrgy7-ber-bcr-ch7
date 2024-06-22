@@ -19,14 +19,15 @@ const EditCar: React.FC = () => {
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
   const [success, setSuccess] = useState<boolean>(false);
+  const [file, setFile] = useState<File | null>(null);
 
   useEffect(() => {
     const getCarId = async () => {
       try {
         const response = await axios.get(`http://localhost:8000/api/cars/${id}`);
         console.log("response", response.data);
-        
-        setCar(response.data.cars);
+
+        setCar(response.data.car); // Updated this line
       } catch (err: unknown) {
         if (axios.isAxiosError(err)) {
           setError(err.response?.data?.message || err.message);
@@ -52,9 +53,19 @@ const EditCar: React.FC = () => {
         throw new Error("Unauthorized");
       }
 
-      const response = await axios.put(`http://localhost:8000/api/cars/${id}`, car, {
+      const formData = new FormData();
+      formData.append("name", car.name);
+      formData.append("price", car.price);
+      formData.append("start_rent", car.startRent); // Updated to "start_rent"
+      formData.append("finish_rent", car.finishRent); // Updated to "finish_rent"
+      formData.append("availability", car.availability);
+      if (file) {
+        formData.append("image", file);
+      }
+
+      const response = await axios.put(`http://localhost:8000/api/cars/${id}`, formData, {
         headers: {
-          "Content-Type": "application/json",
+          "Content-Type": "multipart/form-data",
           Authorization: `Bearer ${token}`,
         },
       });
@@ -80,6 +91,11 @@ const EditCar: React.FC = () => {
     setCar((prevCar) => (prevCar ? { ...prevCar, [name]: value } : null));
   };
 
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0] || null;
+    setFile(file);
+  };
+
   if (isLoading) {
     return <p>Loading...</p>;
   }
@@ -95,12 +111,33 @@ const EditCar: React.FC = () => {
   return (
     <div>
       <h1>Edit Car</h1>
+      <div>
+        <label>Current Image:</label>
+        <img src={car.image} alt="Current car" style={{ width: '200px', height: 'auto' }} />
+      </div>
       <input 
         type="file"
         name="image"
-        value={car.image}
-        onChange={handleChange}
+        onChange={handleFileChange} // Removed value attribute
       />
+      <div>
+        <label>Start Rent:</label>
+        <input
+          type="date"
+          name="startRent"
+          value={car.startRent ? car.startRent.split('T')[0] : ""}
+          onChange={handleChange}
+        />
+      </div>
+      <div>
+        <label>Finish Rent:</label>
+        <input
+          type="date"
+          name="finishRent"
+          value={car.finishRent ? car.finishRent.split('T')[0] : ""}
+          onChange={handleChange}
+        />
+      </div>
       <input
         type="text"
         name="name"
@@ -111,18 +148,6 @@ const EditCar: React.FC = () => {
         type="text"
         name="price"
         value={car.price}
-        onChange={handleChange}
-      />
-      <input
-        type="date"
-        name="startRent"
-        value={car.startRent}
-        onChange={handleChange}
-      />
-      <input
-        type="date"
-        name="finishRent"
-        value={car.finishRent}
         onChange={handleChange}
       />
       <input
