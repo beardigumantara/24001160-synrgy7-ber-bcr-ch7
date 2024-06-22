@@ -1,4 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
+import axios from "axios";
 import React, {useEffect, useState} from "react";
 
 
@@ -22,9 +23,8 @@ const CardAdmin: React.FC = () => {
    const getCar = async () => {
     try {
       setIsLoading(true);
-      const response = await fetch("http://localhost:4000/cars");
-      const data = await response.json();
-      setCars(data);
+      const response = await axios.get("http://localhost:8000/api/cars");
+      setCars(response.data);
     } catch (err : any) {
       setError(err.message);
     } finally {
@@ -42,19 +42,40 @@ const CardAdmin: React.FC = () => {
     return <p style={{ color: "red" }}>{error}</p>;
   }
 
+  const handleDeleteCar = async (id: number) => {
+    try {
+      const token = localStorage.getItem("token");
+      if (!token) {
+        throw new Error("Unauthorized");
+      }
+
+      await axios.delete(`http://localhost:8000/api/cars/${id}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      
+      setCars((prevCars) => prevCars.filter((car) => car.id !== id));
+      alert("Car deleted successfully!");
+    } catch (err : any) {
+      console.error(err);
+    }
+  }
+
   return (
     <div>
       <h1>Cars</h1>
       <ul>
-        {cars.map((car) => (
-          <li key={car.id}>
+      {cars.map((car) => (
+          <div key={car.id} style={{ border: "1px solid #ccc", padding: "10px", borderRadius: "8px", width: "200px" }}>
+            <img src={car.image} alt={car.name} style={{ width: "100%", borderRadius: "8px" }} />
             <h2>{car.name}</h2>
             <p>Price: {car.price}</p>
+            <p>Available: {car.availability}</p>
             <p>Start Rent: {car.startRent}</p>
             <p>Finish Rent: {car.finishRent}</p>
-            <p>Availability: {car.availability}</p>
-            <img src={car.image} alt={car.name} />
-          </li>
+            <button onClick={() => handleDeleteCar(car.id)}>Delete</button>
+          </div>
         ))}
       </ul>
     </div>
