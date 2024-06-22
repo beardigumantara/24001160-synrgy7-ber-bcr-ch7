@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import background from "../../assets/images/image 2.png";
+import styles from "./login.module.css";
 
 interface LoginParams {
   email: string;
@@ -11,24 +13,27 @@ interface LoginResponse {
   role: string;
 }
 
-async function doLogin({ email, password }: LoginParams): Promise<LoginResponse> {
+async function doLogin({
+  email,
+  password,
+}: LoginParams): Promise<LoginResponse> {
   console.log({ email, password });
   // Use your own endpoint
 
   const response = await fetch("http://localhost:8000/api/users/auth/login", {
-      method: "POST",
-      headers: {
-          "Content-Type": "application/json",
-          },
-      body: JSON.stringify({
-          email,
-          password,
-      }),
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      email,
+      password,
+    }),
   });
   const data = await response.json();
   console.log("data", data);
-  
-  return {token: data.token, role: data.role};
+
+  return { token: data.token, role: data.role };
 }
 
 const Login: React.FC = () => {
@@ -40,16 +45,16 @@ const Login: React.FC = () => {
   const [_isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
   const token = localStorage.getItem("token");
 
-  useEffect (() => {
+  useEffect(() => {
     setIsLoggedIn(!!token);
   }, [token]);
 
   const handleLogin = () => {
     setIsLoading(true);
     doLogin({ email, password })
-      .then(({token, role}) => {
+      .then(({ token, role }) => {
         localStorage.setItem("token", token);
-        console.log("role",role);
+        console.log("role", role);
         if (role === "superadmin") {
           navigate("/admin/cars");
         } else {
@@ -58,29 +63,43 @@ const Login: React.FC = () => {
       })
       .catch((err) => console.log(err.message))
       .finally(() => setIsLoading(false));
-
-  }
+  };
 
   return (
-    <div className="container">
-      <h1>Login</h1>
-      <input
-        type="text"
-        placeholder="Email"
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
-      />
-      <input
-        type="password"
-        placeholder="Password"
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
-      />
-      <button onClick={handleLogin} disabled={isLoading}>
-        {isLoading ? "Loading..." : "Login"}
-      </button>
+    <div className="d-flex flex-lg-row">
+      <div className={styles.containerImg}>
+        <img src={background} alt="background" />
+      </div>
+      <div className={styles.container}>
+        <a href="" className={styles.logo}>
+          <span>BCR</span>
+        </a>
+        <h1>Welcome, Admin BCR</h1>
+        <div className={styles.formLogin}>
+          <p>Email</p>
+          <input
+            type="text"
+            placeholder="Contoh: johndee@gmail.com"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
+          <p>Password</p>
+          <input
+            type="password"
+            placeholder="6+ karakter"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+          <div>
+            <a href="/register">Don't have an account, Register</a>
+          </div>
+        </div>
+        <button onClick={handleLogin} disabled={isLoading} id={styles.btnBlue}>
+          {isLoading ? "Loading..." : "Login"}
+        </button>
+      </div>
     </div>
-  )
-}
+  );
+};
 
 export default Login;
