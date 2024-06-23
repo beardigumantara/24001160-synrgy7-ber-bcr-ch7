@@ -55,7 +55,7 @@ const TableCars: React.FC = () => {
         </span>
       </p>
       <h1>Dashboard</h1>
-      <div>
+      <div className={styles.formTable}>
         <h2>
           <span>
             <img src={icon} alt="" />
