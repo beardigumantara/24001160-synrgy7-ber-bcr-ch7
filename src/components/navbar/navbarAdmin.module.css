@@ -1,0 +1,38 @@
+.containerNav {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+.containerNav button{
+  margin: 8px 25px;
+  background-color: white;
+}
+
+.searchForm input {
+  width: 174px;
+  height: 36px;
+  border: #d4d4d4 solid 1px;
+}
+
+.searchForm input::placeholder {
+  font-size: 12px;
+  font-weight: 300;
+  color: #8A8A8A;
+  padding-left: 8px;
+}
+
+.searchForm button {
+  background-color: white;
+  color: #0D28A6;
+  width: 71px;
+  border: #0D28A6 solid 1px;
+  font-size: 14px;
+  font-weight: 700;
+  margin-left: 0;
+  margin-right: 0;
+  height: 36px;
+}
+
+.searchForm {
+  margin-right: 24px;
+}
