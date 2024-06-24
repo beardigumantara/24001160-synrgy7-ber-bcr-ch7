@@ -84,3 +84,24 @@
   margin-top: 16px;
   margin-left: 14px;
 }
+
+.title {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+}
+
+#btnBlue {
+  background-color: #0D28A6;
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 700;
+  padding: 8px auto;
+  width: 142px;
+  margin: 16px;
+
+}
+
+#btnBlue span {
+  margin-right: 12px;
+}

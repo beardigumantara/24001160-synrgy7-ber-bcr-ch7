@@ -30,9 +30,11 @@ const CardAdmin: React.FC = () => {
         setIsLoading(true);
         const response = await axios.get("http://localhost:8000/api/cars");
         console.log("response", response.data);
-        // const filteredCars = response.data.cars.filter((car: Car) => car.deleted_by === null);
-        // setCars(filteredCars);
-        setCars(response.data.cars);
+        const filteredCars = response.data.cars.filter(
+          (car: Car) => car.deleted_by === null
+        );
+        setCars(filteredCars);
+        // setCars(response.data.cars);
       } catch (err: any) {
         setError(err.message);
       } finally {
@@ -84,31 +86,45 @@ const CardAdmin: React.FC = () => {
           <i className="bi bi-chevron-right"></i> List Cars
         </span>
       </p>
-        <h2 style={{fontSize: "20px", fontWeight: "700", margin: "24px 0"}}>
+      <div className={styles.title}>
+        <h2 style={{ fontSize: "20px", fontWeight: "700", margin: "24px 0" }}>
           <span>
             <img src={icon} alt="" />
           </span>
           List Cars
         </h2>
-        <div className={styles.box}>
-          {cars.map((car) => (
-            <div
-            className={styles.card}
-              key={car.id}
-            >
-              <img
-                src={car.image}
-                alt={car.name}
-              />
-              <h3>{car.name}</h3>
-              <h2>{car.price} / hari</h2>
-              <p><span><i className="bi bi-key"></i></span>{car.finish_rent.substring(0, 10)} - {car.finish_rent.substring(0,10)}</p>
-              <p><span><i className="bi bi-clock"></i></span> Update at {car.updated_at}</p>
-              <button id={styles.btnDel} onClick={() => handleDeleteCar(car.id)}>Delete</button>
-              <button id={styles.btnEdit} onClick={() => handleEditCar(car.id)}>Edit</button>
-            </div>
-          ))}
-        </div>
+        <a href="/admin/cars/create">
+          <button id={styles.btnBlue}><span>+</span>Add New Car</button>
+        </a>
+      </div>
+      <div className={styles.box}>
+        {cars.map((car) => (
+          <div className={styles.card} key={car.id}>
+            <img src={car.image} alt={car.name} />
+            <h3>{car.name}</h3>
+            <h2>{car.price} / hari</h2>
+            <p>
+              <span>
+                <i className="bi bi-key"></i>
+              </span>
+              {car.finish_rent.substring(0, 10)} -{" "}
+              {car.finish_rent.substring(0, 10)}
+            </p>
+            <p>
+              <span>
+                <i className="bi bi-clock"></i>
+              </span>{" "}
+              Update at {car.updated_at}
+            </p>
+            <button id={styles.btnDel} onClick={() => handleDeleteCar(car.id)}>
+              Delete
+            </button>
+            <button id={styles.btnEdit} onClick={() => handleEditCar(car.id)}>
+              Edit
+            </button>
+          </div>
+        ))}
+      </div>
     </div>
   );
 };
