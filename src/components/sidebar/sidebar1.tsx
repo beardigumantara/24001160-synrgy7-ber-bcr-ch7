@@ -1,9 +1,9 @@
 import React from "react";
 import styles from "./sidebar.module.css";
-import dashboard from "../../assets/images/Home.png";
-import carIcon from "../../assets/images/Administrator.png";
+import dashboard from "../../assets/images/dashboard.png";
+import carIcon from "../../assets/images/AdminCar.png";
 
-const Sidebar: React.FC = () => {
+const Sidebar1: React.FC = () => {
   return (
     <div className="d-flex flex-row">
       <div className={styles.navbar}>
@@ -17,11 +17,11 @@ const Sidebar: React.FC = () => {
         <a href="" className={styles.logo1}>
           <span>BCR</span>
         </a>
-        <h2>DASHBOARD</h2>
-        <a href=""><p>Dashboard</p></a>
+        <h2>CARS</h2>
+        <a href=""><p>Cars</p></a>
       </div>
     </div>
   );
 };
 
-export default Sidebar;
+export default Sidebar1;

@@ -1,19 +1,18 @@
 import React from "react";
-// import CardAdmin from "../../components/cards/cardAdmin";
-import Sidebar from "../../components/sidebar/sidebar";
 import NavbarAdmin from "../../components/navbar/navbarAdmin";
+import CardAdmin from "../../components/cards/cardAdmin";
 import styles from "./admin.module.css";
-import TableCars from "../../components/cards/tableCars";
+import Sidebar1 from "../../components/sidebar/sidebar1";
 
-const Admin: React.FC = () => {
+const CarAdmin: React.FC = () => {
   const handleLogout = () => {
     localStorage.removeItem("token");
     window.location.href = "/login";
   };
 
   return (
-    <div className="d-flex flex-row" style={{ backgroundColor: "#F4F5F7" }}>
-      <Sidebar />
+    <div className="d-flex flex-row" style={{ backgroundColor: "#F4F5F7", height:"100vh" }}>
+      <Sidebar1 />
       <div>
         <div
           className="d-flex flex-row justify-content-between align-items-center"
@@ -29,11 +28,10 @@ const Admin: React.FC = () => {
             Logout
           </button>
         </div>
-        {/* <CardAdmin /> */}
-        <TableCars />
+        <CardAdmin />
       </div>
     </div>
   );
 };
 
-export default Admin;
+export default CarAdmin;

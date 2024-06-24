@@ -8,6 +8,7 @@ import Protected from './components/protected'
 import Register from './pages/auth/register'
 import CreateCar from './pages/admin/createCar'
 import EditCar from './pages/admin/editCar'
+import CarAdmin from './pages/admin/carAdmin'
 
 function App() {
   return(
@@ -18,10 +19,17 @@ function App() {
         <Route path='/login' element={<Login />}/>
         <Route path='/register' element={<Register />}/>
         <Route 
-          path='/admin/cars' 
+          path='/admin' 
           element={
             <Protected>
               <Admin/>
+            </Protected>}
+        />
+        <Route 
+          path='/admin/cars' 
+          element={
+            <Protected>
+              <CarAdmin />
             </Protected>}
         />
         <Route 
