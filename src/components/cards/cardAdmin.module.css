@@ -1,10 +1,28 @@
 .containerCard {
   height: 100vh;
   overflow-y: scroll;
+  margin-left: 24px ;
+}
+.containerCard p {
+  margin-top: 32px;
+  font-size: 12px;
+  font-weight: 700;
+  margin-bottom: 0;
+}
+
+.containerCard span {
+  font-size: 12px;
+  font-weight: 300;
+}
+
+.containerCard h1 {
+  font-size: 20px;
+  font-weight: 700;
+  margin-top: 24px;
+  margin-bottom: 0;
 }
 
 .box {
-  margin-left: 25px;
   display: flex;
   /* grid-template-columns: repeat(auto-fill,minmax(351px, 1fr)); */
   flex-wrap: wrap;

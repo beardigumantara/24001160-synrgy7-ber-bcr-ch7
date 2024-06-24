@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
+import Sidebar1 from "../../components/sidebar/sidebar1";
+import NavbarAdmin from "../../components/navbar/navbarAdmin";
+import styles from "./editCar.module.css";
 
 interface Car {
   id: number;
@@ -24,7 +27,9 @@ const EditCar: React.FC = () => {
   useEffect(() => {
     const getCarId = async () => {
       try {
-        const response = await axios.get(`http://localhost:8000/api/cars/${id}`);
+        const response = await axios.get(
+          `http://localhost:8000/api/cars/${id}`
+        );
         console.log("response", response.data);
 
         setCar(response.data.car); // Updated this line
@@ -43,6 +48,11 @@ const EditCar: React.FC = () => {
 
     getCarId();
   }, [id]);
+
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    window.location.href = "/login";
+  };
 
   const handleEditCar = async () => {
     if (!car) return;
@@ -63,17 +73,20 @@ const EditCar: React.FC = () => {
         formData.append("image", file);
       }
 
-      const response = await axios.put(`http://localhost:8000/api/cars/${id}`, formData, {
-        headers: {
-          "Content-Type": "multipart/form-data",
-          Authorization: `Bearer ${token}`,
-        },
-      });
+      const response = await axios.put(
+        `http://localhost:8000/api/cars/${id}`,
+        formData,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
 
       setSuccess(true);
       console.log(response.data);
       navigate("/admin/cars");
-      
     } catch (err: unknown) {
       if (axios.isAxiosError(err)) {
         setError(err.response?.data?.message || err.message);
@@ -86,7 +99,9 @@ const EditCar: React.FC = () => {
     }
   };
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
+  ) => {
     const { name, value } = e.target;
     setCar((prevCar) => (prevCar ? { ...prevCar, [name]: value } : null));
   };
@@ -109,55 +124,105 @@ const EditCar: React.FC = () => {
   }
 
   return (
-    <div>
-      <h1>Edit Car</h1>
+    <div
+      className="d-flex flex-row"
+      style={{ backgroundColor: "#F4F5F7", height: "100vh" }}
+    >
+      <Sidebar1 />
       <div>
-        <label>Current Image:</label>
-        <img src={car.image} alt="Current car" style={{ width: '200px', height: 'auto' }} />
+        <div
+          className="d-flex flex-row justify-content-between align-items-center"
+          style={{
+            height: "70px",
+            width: "1230px",
+            backgroundColor: "#FFFFFF",
+            boxShadow: "2px 10px 18px #EBEFF5",
+          }}
+        >
+          <NavbarAdmin />
+          <button onClick={handleLogout} id={styles.btnBlue}>
+            Logout
+          </button>
+        </div>
+        <div className={styles.containerEdit}>
+          <p>
+            Cars{" "}
+            <span>
+              <i className="bi bi-chevron-right"></i> List Cars
+            </span>
+            <span>
+              <i className="bi bi-chevron-right"></i> Edit Car
+            </span>
+          </p>
+          <h2 style={{ fontSize: "20px", fontWeight: "700", margin: "24px 0" }}>
+            Edit Car
+          </h2>
+          <div className={styles.edit}>
+            <div>
+              <label>Nama</label>
+              <input
+                type="text"
+                name="name"
+                value={car.name}
+                onChange={handleChange}
+              />
+            </div>
+            <div>
+              <label>Harga</label>
+              <input
+                type="text"
+                name="price"
+                value={car.price}
+                onChange={handleChange}
+              />
+            </div>
+            <div>
+              <label>Availability</label>
+              <select
+                name="availability"
+                value={car.availability}
+                onChange={handleChange}
+              >
+                <option value="true">Available</option>
+                <option value="false">Not Available</option>
+              </select>
+            </div>
+            <div>
+              <label>Foto</label>
+              <input
+                type="file"
+                name="image"
+                onChange={handleFileChange} // Removed value attribute
+              />
+            </div>
+            <div>
+              <label>Start Rent</label>
+              <input
+                type="date"
+                name="startRent"
+                value={car.startRent ? car.startRent.split("T")[0] : ""}
+                onChange={handleChange}
+              />
+            </div>
+            <div>
+              <label>Finish Rent</label>
+              <input
+                type="date"
+                name="finishRent"
+                value={car.finishRent ? car.finishRent.split("T")[0] : ""}
+                onChange={handleChange}
+              />
+            </div>
+          </div>
+          <a href="/admin/cars">
+            <button id={styles.btnWhite}>Cancel</button>
+          </a>
+          <button onClick={handleEditCar} id={styles.btnBlue}>Save</button>
+          {success && (
+            <p style={{ color: "green" }}>Car updated successfully</p>
+          )}
+        </div>
       </div>
-      <input 
-        type="file"
-        name="image"
-        onChange={handleFileChange} // Removed value attribute
-      />
-      <div>
-        <label>Start Rent:</label>
-        <input
-          type="date"
-          name="startRent"
-          value={car.startRent ? car.startRent.split('T')[0] : ""}
-          onChange={handleChange}
-        />
-      </div>
-      <div>
-        <label>Finish Rent:</label>
-        <input
-          type="date"
-          name="finishRent"
-          value={car.finishRent ? car.finishRent.split('T')[0] : ""}
-          onChange={handleChange}
-        />
-      </div>
-      <input
-        type="text"
-        name="name"
-        value={car.name}
-        onChange={handleChange}
-      />
-      <input
-        type="text"
-        name="price"
-        value={car.price}
-        onChange={handleChange}
-      />
-      <input
-        type="text"
-        name="availability"
-        value={car.availability}
-        onChange={handleChange}
-      />
-      <button onClick={handleEditCar}>Save Changes</button>
-      {success && <p style={{ color: "green" }}>Car updated successfully</p>}
     </div>
   );
 };

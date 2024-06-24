@@ -4,6 +4,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styles from "./cardAdmin.module.css";
+import icon from "../../assets/images/Rectangle 9.png";
 
 interface Car {
   id: number;
@@ -77,7 +78,18 @@ const CardAdmin: React.FC = () => {
 
   return (
     <div className={styles.containerCard}>
-      <h1>Cars</h1>
+      <p>
+        Cars{" "}
+        <span>
+          <i className="bi bi-chevron-right"></i> List Cars
+        </span>
+      </p>
+        <h2 style={{fontSize: "20px", fontWeight: "700", margin: "24px 0"}}>
+          <span>
+            <img src={icon} alt="" />
+          </span>
+          List Cars
+        </h2>
         <div className={styles.box}>
           {cars.map((car) => (
             <div
