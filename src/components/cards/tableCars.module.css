@@ -1,0 +1,30 @@
+.containerTable {
+    width: 1100px;
+    margin-left: 24px ;
+}
+
+.containerTable p {
+  margin-top: 32px;
+  font-size: 12px;
+  font-weight: 700;
+  margin-bottom: 0;
+}
+
+.containerTable span {
+  font-size: 12px;
+  font-weight: 300;
+}
+
+.containerTable h1 {
+  font-size: 20px;
+  font-weight: 700;
+  margin-top: 24px;
+  margin-bottom: 0;
+}
+
+.formTable h2 {
+  font-size: 14px;
+  font-weight: 700;
+  margin-top: 26px;
+  margin-bottom: 18px;
+}

@@ -1,0 +1,242 @@
+.ourSection {
+  margin-top: 100px;
+}
+.rightImg {
+  text-align: right;
+  padding: 0;
+}
+.rightImg img {
+  margin-right: 61px;
+}
+.desc {
+  margin-top: 36px;
+}
+
+.desc h1 {
+  margin-left: 39px;
+  font-style: bold;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 36px;
+}
+
+.desc p {
+  margin-top: 24px;
+  margin-left: 39px;
+  font-weight: 300;
+  font-size: 14px;
+  line-height: 20px;
+}
+
+.desc ul {
+  margin-left: 39px;
+}
+
+.desc ul li {
+  padding-bottom: 18px;
+}
+
+.desc ul img {
+  padding-right: 16px;
+}
+
+/* why-us */
+
+.whyUs h1 {
+  margin: 100px 0 16px 0;
+  font-style: bold;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 36px;
+}
+
+.whyUs p {
+  font-weight: 300;
+  font-size: 14px;
+  line-height: 20px;
+}
+
+.card, .cardBody {
+  width: 268px;
+}
+
+.cardBody h5 {
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 24px;
+}
+
+.cardBody h5, .cardBody img {
+  margin-bottom: 16px;
+}
+
+.cardBody h5, .cardBody img, .cardBody p {
+  padding-left: 24px;
+}
+
+.cardBody img {
+  padding-top: 24px;
+}
+
+.cardBody p {
+  padding-bottom: 24px;
+}
+
+/* .card-text {
+  width: 220px;
+} */
+
+/* testimonial carousel */
+.testimonialHeader h1,
+.testimonialHeader p {
+  text-align: center;
+}
+
+.testimonialHeader h1 {
+  margin-top: 100px;
+  margin-bottom: 16px;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 36px;
+}
+
+.testimonialHeader p {
+  margin-bottom: 40px;
+}
+
+.carousel1 {
+  width: 619px;
+  height: 270px;
+  background-color: #f1f3ff !important;
+  box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.15);
+  border-radius: 8px;
+  border: none;
+  margin: 0 auto;
+}
+
+.statementTestimonial {
+  width: 415px;
+  margin-top: 8px;
+  margin-bottom: 8px;
+  font-weight: 300;
+  font-size: 14px;
+}
+
+.name {
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.imageDesc {
+  height: 100%;
+  align-items: center;
+}
+
+.imageTestimonial {
+  margin: 95px 0 95px 46px;
+}
+
+.descTestimonial {
+  margin-right: 32px;
+}
+
+.carouselItem {
+  align-content: center;
+  margin-bottom: 24px;
+}
+.dBlock {
+  background-color: red;
+}
+
+.prevButton {
+  margin-right: 12px;
+}
+
+.nextButton {
+  margin-left: 12px;
+}
+
+.prevButton,
+.nextButton {
+  border: none;
+  background: none;
+  padding: 0;
+}
+/* Getting Started */
+.gettingStarted {
+  margin-top: 100px;
+}
+.ctaBanner {
+  background: #0d28a6;
+  width: 100%;
+  height: 326px;
+  margin: 0 auto;
+  color: #ffffff;
+  text-align: center;
+  border-radius: 13px;
+}
+
+.ctaBanner h1 {
+  padding-top: 64px;
+  font-weight: 700;
+  font-size: 36px;
+}
+.ctaBanner p {
+  padding-top: 16px;
+  font-weight: 300;
+  font-size: 14px;
+  width: 468px;
+  line-height: 20px;
+  margin: 0 auto;
+  padding: 16px 0 52px;
+}
+
+/* FAQ */
+
+.faqSection {
+  margin-top: 100px;
+}
+
+.faqDesc {
+  width: 100%;
+}
+
+.faqDesc h1 {
+  font-weight: 700;
+  font-size: 24px;
+}
+
+.faqDesc p {
+  font-weight: 300;
+  font-size: 14px;
+}
+
+.accordion {
+  align-content: right;
+  width: 668px;
+}
+
+.accordionItem {
+  margin-bottom: 16px;
+  border: none;
+}
+
+.accordionButton {
+  font-size: 14px;
+  border: 1px solid #d4d4d4;
+  border-radius: 4px;
+}
+
+.accordionBody {
+  border: 1px solid #d4d4d4;
+  border-radius: 4px;
+}
+
+#btnGreen {
+  background-color: #5cb85f;
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 700;
+  padding: 8px 12px;
+}

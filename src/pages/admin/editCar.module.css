@@ -1,0 +1,60 @@
+#btnBlue {
+  background-color: #0D28A6;
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 700;
+  margin-right: 24px !important;
+}
+
+#btnWhite {
+  border: #0D28A6 1px solid;
+  background-color: #ffffff;
+  color: #0D28A6;
+  font-size: 14px;
+  font-weight: 700;
+  margin-right: 24px !important;
+}
+
+.containerEdit {
+  margin-left: 24px ;
+}
+
+.containerEdit p {
+  margin-top: 32px;
+  font-size: 12px;
+  font-weight: 700;
+  margin-bottom: 0;
+}
+
+.containerEdit span {
+  font-size: 12px;
+  font-weight: 300;
+}
+
+.containerEdit h1 {
+  font-size: 20px;
+  font-weight: 700;
+  margin-top: 24px;
+  margin-bottom: 0;
+}
+
+.edit {
+  width: 1100px;
+  height: 350px;
+  margin-bottom: 24px;
+  background-color: #ffffff;
+}
+
+.edit label {
+  margin-left: 16px;
+  width: 147px;
+}
+
+.edit input, .edit select {
+  width: 339px;
+  margin-top: 16px;
+  margin-bottom: 0 !important;
+  height: 36px;
+  /* border: 1px solid #D0D0D0; */
+  padding-left: 16px;
+}
