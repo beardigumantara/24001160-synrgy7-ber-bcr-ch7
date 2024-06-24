@@ -1,9 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import Sidebar1 from "../../components/sidebar/sidebar1";
 import NavbarAdmin from "../../components/navbar/navbarAdmin";
 import styles from "./editCar.module.css";
+import { AdminContext } from "../../context/admin";
 
 interface Car {
   id: number;
@@ -23,6 +24,7 @@ const EditCar: React.FC = () => {
   const [error, setError] = useState<string | null>(null);
   const [success, setSuccess] = useState<boolean>(false);
   const [file, setFile] = useState<File | null>(null);
+  const {handleLogout} = useContext(AdminContext);
 
   useEffect(() => {
     const getCarId = async () => {
@@ -48,11 +50,6 @@ const EditCar: React.FC = () => {
 
     getCarId();
   }, [id]);
-
-  const handleLogout = () => {
-    localStorage.removeItem("token");
-    window.location.href = "/login";
-  };
 
   const handleEditCar = async () => {
     if (!car) return;

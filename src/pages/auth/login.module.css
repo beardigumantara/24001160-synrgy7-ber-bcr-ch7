@@ -35,14 +35,16 @@
   margin-bottom: 32px;
 }
 
-input{
+.formLogin input{
   width: 370px;
+  height: 39px;
   font-size: 12px;
   font-weight: 300;
-  margin: 16px 0 !important;
+  padding-left: 16px;
+  margin: 9px 0 !important;
 }
 
-input::placeholder {
+.formLogin input::placeholder {
   font-size: 12px;
   font-weight: 300;
 }

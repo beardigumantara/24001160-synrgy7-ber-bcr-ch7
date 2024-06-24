@@ -1,9 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import Sidebar1 from "../../components/sidebar/sidebar1";
 import NavbarAdmin from "../../components/navbar/navbarAdmin";
 import styles from "./editCar.module.css";
+import { AdminContext } from "../../context/admin";
+
 
 const CreateCar: React.FC = () => {
   const [name, setName] = useState<string>("");
@@ -16,17 +18,13 @@ const CreateCar: React.FC = () => {
   const [error, setError] = useState<string | null>(null);
   const [success, setSuccess] = useState<boolean>(false);
   const navigate = useNavigate();
+  const {handleLogout} = useContext(AdminContext);
 
   const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const files = e.target.files;
     if (files) {
       setImage(files[0]);
     }
-  };
-
-  const handleLogout = () => {
-    localStorage.removeItem("token");
-    window.location.href = "/login";
   };
 
   const handleCreateCar = async () => {

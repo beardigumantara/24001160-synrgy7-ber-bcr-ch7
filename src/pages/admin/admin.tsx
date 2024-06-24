@@ -1,15 +1,14 @@
-import React from "react";
+import React,{useContext} from "react";
 // import CardAdmin from "../../components/cards/cardAdmin";
 import Sidebar from "../../components/sidebar/sidebar";
 import NavbarAdmin from "../../components/navbar/navbarAdmin";
 import styles from "./admin.module.css";
 import TableCars from "../../components/cards/tableCars";
+import { AdminContext } from "../../context/admin";
 
 const Admin: React.FC = () => {
-  const handleLogout = () => {
-    localStorage.removeItem("token");
-    window.location.href = "/login";
-  };
+  const {handleLogout} = useContext(AdminContext);
+
 
   return (
     <div className="d-flex flex-row" style={{ backgroundColor: "#F4F5F7" }}>
@@ -25,7 +24,7 @@ const Admin: React.FC = () => {
           }}
         >
           <NavbarAdmin />
-          <button onClick={handleLogout} id={styles.btnBlue}>
+          <button onClick={handleLogout()} id={styles.btnBlue}>
             Logout
           </button>
         </div>

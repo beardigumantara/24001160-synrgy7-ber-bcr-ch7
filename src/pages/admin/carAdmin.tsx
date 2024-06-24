@@ -1,14 +1,12 @@
-import React from "react";
+import React, {useContext} from "react";
 import NavbarAdmin from "../../components/navbar/navbarAdmin";
 import CardAdmin from "../../components/cards/cardAdmin";
 import styles from "./admin.module.css";
 import Sidebar1 from "../../components/sidebar/sidebar1";
+import { AdminContext } from "../../context/admin";
 
 const CarAdmin: React.FC = () => {
-  const handleLogout = () => {
-    localStorage.removeItem("token");
-    window.location.href = "/login";
-  };
+  const {handleLogout} = useContext(AdminContext);
 
   return (
     <div className="d-flex flex-row" style={{ backgroundColor: "#F4F5F7", height:"100vh" }}>
