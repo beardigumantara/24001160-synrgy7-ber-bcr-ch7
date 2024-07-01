@@ -91,7 +91,7 @@ const Login: React.FC = () => {
             onChange={(e) => setPassword(e.target.value)}
           />
           <div>
-            <a href="/register">Don't have an account, Register</a>
+            <a href="/register">Don&apos;t have an account, Register</a>
           </div>
         </div>
         <button onClick={handleLogin} disabled={isLoading} id={styles.btnBlue}>

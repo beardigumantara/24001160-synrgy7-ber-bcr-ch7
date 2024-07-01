@@ -43,7 +43,6 @@ const TableCars: React.FC = () => {
 
     console.log("cars", cars);
 
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
